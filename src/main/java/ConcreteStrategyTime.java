@@ -6,14 +6,14 @@ public class ConcreteStrategyTime implements Strategy{
     //in cazul acestei strategii noi vom pune task ul in functie de timpul
     @Override
     public void addTask(List<Server> servers, Task t) {
-        int numberClients = Integer.MAX_VALUE;
+        int waitingTime = Integer.MAX_VALUE;
         for (Server server : servers){
-            if( server.getWaitingPeriod() < numberClients){
-                numberClients = server.getWaitingPeriod();
+            if( server.getWaitingPeriod() < waitingTime){
+                waitingTime = server.getWaitingPeriod();
             }
         }
         for (Server server : servers){
-            if(server.getWaitingPeriod() == numberClients){
+            if(server.getWaitingPeriod() == waitingTime){
                 server.addTask(t);
                 break;
             }
